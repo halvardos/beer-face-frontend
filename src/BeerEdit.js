@@ -18,17 +18,17 @@ export default class BeerEdit extends React.Component {
         smile: 0,
       },
     };
-    console.log('test');
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleBeerUpdate = this.handleBeerUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
-    await this.getBeer(this.props.match.params.beerId);
+    if (this.props.match.params.beerId) {
+      await this.getBeer(this.props.match.params.beerId);
+    }
   }
 
   async getBeer(beerId) {
-    console.log(beerId);
     const response = await fetch(`https://face-beer.herokuapp.com/api/beer/${beerId}`);
     this.setState({
       beer: await response.json(),
@@ -48,20 +48,24 @@ export default class BeerEdit extends React.Component {
     });
   }
 
-  async handleBeerUpdate(event) {
-    console.log(event.target);
+  async handleSubmit(event) {
     event.preventDefault();
-    const res = await fetch("https://face-beer.herokuapp.com/api/beer", {
-      method: "PATCH",
+    if (this.props.match.params.beerId) {
+      return await fetch("https://face-beer.herokuapp.com/api/beer", {
+        method: "PATCH",
+        body: new FormData(event.target),
+      });
+    }
+    return await fetch("https://face-beer.herokuapp.com/api/beer", {
+      method: "POST",
       body: new FormData(event.target),
     });
-    console.log(await res.json());
   }
 
   renderBeer() {
     return (
     <div>
-      <form onSubmit={this.handleBeerUpdate}>
+      <form onSubmit={this.handleSubmit}>
         <input type="hidden" name="beer" value={this.state.beer.beer} />
         <label>
           name
@@ -69,7 +73,7 @@ export default class BeerEdit extends React.Component {
         </label>
         <label>
           description
-          <input type="text" name="description" value={this.state.beer.description} onChange={this.handleInputChange} />
+          <textarea type="text" name="description" value={this.state.beer.description} onChange={this.handleInputChange} />
         </label>
         <label>
           age
@@ -99,20 +103,15 @@ export default class BeerEdit extends React.Component {
           smile
           <input type="number" name="smile" value={this.state.beer.smile} onChange={this.handleInputChange} />
         </label>
-        <button type="submit">Update</button>
+        {(this.props.match.params.beerId) ? <button type="submit">Update</button> : <button type="submit">Create</button>}
       </form>
     </div>);
-  }
-
-  storeBeer() {
-    // store a new beer
-    // update an existing beer if it exists?
   }
 
   render() {
     return (
       <div>
-        <h1>Create or edit a beer</h1>
+        {(this.props.match.params.beerId) ? <h1>Edit beer</h1> : <h1>Create a beer</h1>}
         {this.renderBeer()}
       </div>);
   }

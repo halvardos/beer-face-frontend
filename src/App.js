@@ -14,10 +14,9 @@ const BasicExample = () => (
     <div>
       <ul>
         <li><Link to="/">Suggest a beer</Link></li>
-        <li><Link to="/beers">Beers</Link></li>
-        <li><Link to="/suggest">Suggest</Link></li>
-        <li><Link to="/suggestions">Suggestions</Link></li>
-        <li><Link to="/beer/123">Edit a beer</Link></li>
+        <li><Link to="/beers">List beers</Link></li>
+        <li><Link to="/suggestions">List suggestions</Link></li>
+        <li><Link to="/beer/">Add a beer</Link></li>
       </ul>
 
       <hr/>
