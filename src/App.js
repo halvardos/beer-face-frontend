@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Promise from 'bluebird';
+import BeerList from './BeerList';
+import Suggest from './Suggest';
+import SuggestList from './SuggestList';
+import BeerEdit from './BeerEdit';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+global.Promise = Promise;
 
-export default App;
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Suggest a beer</Link></li>
+        <li><Link to="/beers">Beers</Link></li>
+        <li><Link to="/suggest">Suggest</Link></li>
+        <li><Link to="/suggestions">Suggestions</Link></li>
+        <li><Link to="/beer/123">Edit a beer</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Suggest}/>
+      <Route path="/suggestions" component={SuggestList}/>
+      <Route path="/beers" component={BeerList}/>
+      <Route path="/beer/:beerId?" component={BeerEdit}/>
+    </div>
+  </Router>
+)
+export default BasicExample
