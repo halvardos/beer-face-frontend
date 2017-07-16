@@ -103,7 +103,7 @@ export default class BeerEdit extends React.Component {
           smile
           <input type="number" name="smile" value={this.state.beer.smile} onChange={this.handleInputChange} />
         </label>
-        {(this.props.match.params.beerId) ? <button type="submit">Update</button> : <button type="submit">Create</button>}
+        {(this.props.match.params.beerId) ? <button className="button button-outline" type="submit">Update</button> : <button className="button button-outline" type="submit">Create</button>}
       </form>
     </div>);
   }
