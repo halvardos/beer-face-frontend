@@ -30,7 +30,7 @@
   background-color: tomato;
   height: 4px;
   position: absolute;
-  top: 0%;
+  top: -2%;
   z-index: 2;
   box-shadow: 0 0 4px red;
   animation: scanning 2s infinite;
