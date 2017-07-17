@@ -1,0 +1,54 @@
+.bullshit {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.47);
+}
+
+.bullshit i {
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.suggestionsContainer {
+  position: relative;
+}
+
+.laser {
+  width: 150%;
+  margin-left: -25%;
+  background-color: tomato;
+  height: 4px;
+  position: absolute;
+  top: 0%;
+  z-index: 2;
+  box-shadow: 0 0 4px red;
+  animation: scanning 2s infinite;
+  animation-direction: alternate;
+}
+
+.diode {
+  animation: beam .002s infinite;
+}
+
+@keyframes beam {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanning {
+  100% {
+    top: 100%;
+  }
+}
