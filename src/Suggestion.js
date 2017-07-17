@@ -38,6 +38,10 @@ export default class Suggestion extends React.Component {
     this.bstimer = setInterval(this.changeBullshitSentence, 3000);
   }
 
+  componentWillUnmount() {
+    window.clearInterval(this.bstimer);
+  }
+
   changeBullshitSentence() {
     const nextIndex = Math.floor(Math.random()*this.state.bullshitList.length);
     const nextBS = this.state.bullshitList[nextIndex];
