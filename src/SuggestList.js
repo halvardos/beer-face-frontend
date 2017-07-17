@@ -30,12 +30,12 @@ export default class SuggestList extends Component {
           <div className="column">
             <h4>Image</h4>
             <img src={element.image_url} alt="face"/>
-            <h4>Recommended: {JSON.parse(element.suggestions)[0].beer.name}</h4>
+            {(element.suggestions) ? <h4>Recommended: {JSON.parse(element.suggestions)[0].beer.name}</h4> : ''}
           </div>
           <div className="column">
             <h4>Faces</h4>
             <pre><code>
-              {JSON.stringify(JSON.parse(element.suggestions)[0].parsedFace, null, 4)}
+              {(element.suggestions) ? <h4>Recommended: {JSON.stringify(JSON.parse(element.suggestions)[0].parsedFace, null, 4)}</h4> : ''}
             </code></pre>
           </div>
         </div>
