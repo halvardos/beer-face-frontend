@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AdminMenu from './AdminMenu';
 import { Link } from 'react-router-dom';
 
 export default class BeerList extends Component {
@@ -33,6 +34,7 @@ export default class BeerList extends Component {
   render() {
     return (
       <div>
+        <AdminMenu />
         <div>List of all our beers</div>
         <ul>{this.renderBeerlist()}</ul>
       </div>

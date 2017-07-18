@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AdminMenu from './AdminMenu';
 
 export default class SuggestList extends Component {
 
@@ -49,6 +50,7 @@ export default class SuggestList extends Component {
   render() {
     return (
       <div>
+        <AdminMenu />
         <h1>List of all suggestions made</h1>
         <div>{this.renderSuggestionList()}</div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import AdminMenu from './AdminMenu';
 
 export default class BeerEdit extends React.Component {
 
@@ -111,6 +112,7 @@ export default class BeerEdit extends React.Component {
   render() {
     return (
       <div>
+        <AdminMenu />
         {(this.props.match.params.beerId) ? <h1>Edit beer</h1> : <h1>Create a beer</h1>}
         {this.renderBeer()}
       </div>);
