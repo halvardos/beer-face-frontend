@@ -24,24 +24,26 @@ export default class SuggestList extends Component {
   }
 
   renderSuggestionList() {
-    return this.state.suggestions.map(element => (
-      <div key={element.suggestion}>
+    return this.state.suggestions.map((element) => {
+      const suggestion = JSON.parse(element.suggestions)[0];
+      if (!suggestion) return ''
+      return (<div key={element.suggestion}>
         <div className="row">
           <div className="column">
             <h4>Image</h4>
             <img src={element.image_url} alt="face"/>
-            {(element.suggestions) ? <h4>Recommended: {JSON.parse(element.suggestions)[0].beer.name}</h4> : ''}
+            {(element.suggestions) ? <h4>Recommended: {suggestion.beer.name}</h4> : ''}
           </div>
           <div className="column">
             <h4>Faces</h4>
             <pre><code>
-              {(element.suggestions) ? <h4>Recommended: {JSON.stringify(JSON.parse(element.suggestions)[0].parsedFace, null, 4)}</h4> : ''}
+              {(element.suggestions) ? <h4>Recommended: {JSON.stringify(suggestion.parsedFace, null, 4)}</h4> : ''}
             </code></pre>
           </div>
         </div>
         <hr/>
       </div>
-    ));
+    )});
   }
 
   render() {
