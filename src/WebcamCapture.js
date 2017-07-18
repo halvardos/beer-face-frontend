@@ -19,14 +19,16 @@ export default class WebcamCapture extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
-      <div>
+      <div className="webcamWrapper">
+      <h1>What beer does your face say you like?</h1>
         <Webcam
           audio={false}
-          height={'100%'}
+          height={400}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width={'100%'}
+          width={400}
         />
         <button className="button" onClick={this.capture}>Beer my Face</button>
       </div>

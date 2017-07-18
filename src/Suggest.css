@@ -41,6 +41,13 @@
   animation: beam .002s infinite;
 }
 
+.webcamWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes beam {
   50% {
     opacity: 0;
